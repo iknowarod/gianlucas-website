@@ -104,37 +104,58 @@ function setupLightbox() {
   });
 }
 
-// ===== Dinosaur that chases the cursor across the forest =====
+// ===== Pterodactyl that flies after the cursor (up, down, left & right) =====
 function setupDino() {
   var forest = document.querySelector(".forest");
   if (!forest) return;
 
+  // Pteranodon gliding silhouette (front view): a smooth wide wing membrane,
+  // central head with a pointed beak and the long backward crest, small feet.
+  var PTERO =
+    '<svg viewBox="0 0 240 130" width="90" height="49" xmlns="http://www.w3.org/2000/svg">' +
+    '<g fill="#3f342a">' +
+    // smooth wing membrane (pointed tips up, body dip in the middle)
+    '<path d="M12 54 Q 120 84 228 54 Q 120 100 12 54 Z"/>' +
+    // head
+    '<circle cx="120" cy="86" r="12"/>' +
+    // pointed beak (points down/forward)
+    '<path d="M111 90 L 129 90 L 120 120 Z"/>' +
+    // long backward head crest (the pteranodon signature)
+    '<path d="M118 80 L 126 73 L 172 38 L 134 82 Z"/>' +
+    // feet
+    '<path d="M113 100 L 108 118 L 121 104 Z M127 100 L 132 118 L 119 104 Z"/>' +
+    '</g></svg>';
+
   var dino = document.createElement("div");
   dino.className = "dino";
-  dino.textContent = "🦖";
+  dino.innerHTML = PTERO;
   forest.appendChild(dino);
 
-  var half = 28;           // roughly half the dino's width
-  var currentX = 60;       // where the dino is now
-  var targetX = 60;        // where it wants to go (the cursor)
-  var facing = 1;          // 1 = facing right, -1 = facing left
+  var halfW = 45, halfH = 24;      // roughly half the pterodactyl's size
+  var rect = forest.getBoundingClientRect();
+  var currentX = rect.width / 2, currentY = rect.height / 2;
+  var targetX = currentX, targetY = currentY;
+  var facing = 1;                  // 1 = flying right, -1 = flying left
 
-  // Follow the cursor's horizontal position (left to right)
+  // Follow the cursor in BOTH directions, but keep the target inside the banner
   document.addEventListener("mousemove", function (e) {
-    var rect = forest.getBoundingClientRect();
-    var x = e.clientX - rect.left;
-    var maxX = rect.width - half;
-    targetX = Math.max(half, Math.min(maxX, x));
+    var r = forest.getBoundingClientRect();
+    var x = e.clientX - r.left;
+    var y = e.clientY - r.top;
+    targetX = Math.max(halfW, Math.min(r.width - halfW, x));
+    targetY = Math.max(halfH, Math.min(r.height - halfH, y));
   });
 
   function tick() {
     var dx = targetX - currentX;
-    currentX += dx * 0.025;                // ease toward the cursor (slower)
+    var dy = targetY - currentY;
+    currentX += dx * 0.03;         // gentle glide toward the cursor
+    currentY += dy * 0.03;
     if (Math.abs(dx) > 0.5) facing = dx > 0 ? 1 : -1;
-    // 🦖 emoji faces left by default, so flip when running right
+    // drawing faces left, so flip when flying right
     var flip = facing === 1 ? -1 : 1;
     dino.style.transform =
-      "translateX(" + (currentX - half) + "px) scaleX(" + flip + ")";
+      "translate(" + (currentX - halfW) + "px," + (currentY - halfH) + "px) scaleX(" + flip + ")";
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
