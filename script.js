@@ -112,8 +112,8 @@ function setupDino() {
   // A detailed, colored pteranodon illustration (side view, facing LEFT).
   var PTERO =
     '<svg viewBox="0 0 240 160" width="96" height="64" xmlns="http://www.w3.org/2000/svg">' +
-    // far wing (behind, darker)
-    '<path fill="#8a5e39" d="M104 70 C 142 46 182 38 210 44 C 182 58 154 76 132 96 C 124 86 112 76 104 70 Z"/>' +
+    // far wing (behind, darker) — flaps
+    '<g class="wing wing-far"><path fill="#8a5e39" d="M104 70 C 142 46 182 38 210 44 C 182 58 154 76 132 96 C 124 86 112 76 104 70 Z"/></g>' +
     // far leg
     '<path fill="#7d5330" d="M122 92 L 128 118 L 135 116 L 129 92 Z"/>' +
     // near leg
@@ -133,9 +133,11 @@ function setupDino() {
     // eye
     '<circle fill="#ffffff" cx="50" cy="57" r="4.2"/>' +
     '<circle fill="#20140a" cx="49" cy="57" r="2.1"/>' +
-    // near wing: arm (brown) + membrane (lighter)
+    // near wing: arm (brown) + membrane (lighter) — flaps
+    '<g class="wing wing-near">' +
     '<path fill="#a9764c" d="M76 62 C 118 38 170 32 224 44 C 198 50 172 58 150 68 Z"/>' +
     '<path fill="#c99c68" d="M150 68 C 172 58 198 50 224 44 C 192 64 156 86 126 98 C 129 84 139 73 150 68 Z"/>' +
+    '</g>' +
     '</svg>';
 
   var dino = document.createElement("div");

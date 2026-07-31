@@ -48,6 +48,26 @@ body {
   display: block;
 }
 
+/* Flapping wings */
+.dino .wing {
+  transform-box: fill-box;
+  transform-origin: 4% 55%;
+  animation: ptero-flap 0.55s ease-in-out infinite;
+}
+
+.dino .wing-far {
+  animation-delay: -0.06s;
+}
+
+@keyframes ptero-flap {
+  0%, 100% { transform: rotate(-16deg); }
+  50%      { transform: rotate(12deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dino .wing { animation: none; }
+}
+
 /* ===== Header & Title ===== */
 .site-title {
   text-align: center;
