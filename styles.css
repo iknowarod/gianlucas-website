@@ -294,6 +294,45 @@ li {
   margin-top: 6px;
 }
 
+/* ===== Sold card ===== */
+.img-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.sold-badge {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  background: #e63900;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  padding: 6px 20px;
+  border-radius: 8px;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.item.sold img {
+  opacity: 0.65;
+  filter: grayscale(35%);
+}
+
+.sold-tag {
+  display: inline-block;
+  background: #9aa4ae;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 999px;
+  margin-top: 6px;
+  font-size: 1.2rem;
+}
+
 /* ===== Click-to-enlarge (lightbox) ===== */
 .zoomable {
   cursor: zoom-in;
