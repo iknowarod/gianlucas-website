@@ -212,6 +212,46 @@ li {
   box-shadow: 0 2px 0 #cc6f00;
 }
 
+/* ===== Big "Hire Me" button ===== */
+.hire-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  background: linear-gradient(180deg, #ffb300, #ff8c00);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 16px 42px;
+  border-radius: 999px;
+  box-shadow: 0 5px 0 #cc6f00;
+  margin-top: 12px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.hire-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 #cc6f00;
+}
+
+.hire-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #cc6f00;
+}
+
+.hire-price {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1f8a4c;
+  margin-top: 6px;
+}
+
+.hire-price strong {
+  color: #e65c00;
+  font-size: 1.5rem;
+}
+
 /* ===== For Sale items (Pokémon) ===== */
 .items {
   display: grid;

@@ -167,10 +167,31 @@ function setupBuyPopup() {
   });
 }
 
+// ===== Press the "Hire Me" button to see how to hire =====
+function setupHirePopup() {
+  var popup = document.getElementById("hire-popup");
+  if (!popup) return;
+  var btns = document.querySelectorAll(".hire-btn");
+  var closeBtn = popup.querySelector(".popup-close");
+
+  function open() { popup.classList.add("open"); }
+  function close() { popup.classList.remove("open"); }
+
+  btns.forEach(function (b) { b.addEventListener("click", open); });
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  popup.addEventListener("click", function (e) {
+    if (e.target === popup) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") close();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   showGreeting();
   showFunFact();
   setupLightbox();
   setupDino();
   setupBuyPopup();
+  setupHirePopup();
 });
