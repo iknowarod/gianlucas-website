@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gianluca's Website — Shop</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
 
@@ -87,28 +87,31 @@
     <!-- ===== Pokémon cards ===== -->
     <div class="card">
       <h2>⚡ My Pokémon Cards for Sale</h2>
-      <p>These are real cards from my collection! I sorted them by their type. Tap a card to see it bigger! 🔍</p>
+      <p>These are real cards from my collection! I sorted them by their type. Tap a card to see it bigger 🔍, or tap a price to learn how to buy! 💰</p>
 
       <div class="items">
         <div class="item">
           <img class="zoomable" src="images/accelgor.jpg" alt="Accelgor Pokémon card 013/159" />
           <h3>Accelgor</h3>
           <div class="type-label">🌿 Grass Type · Uncommon</div>
-          <span class="price">$0.75</span>
+          <button class="price" type="button">$0.75</button>
+          <div class="buy-hint">👆 Tap the price to buy</div>
         </div>
 
         <div class="item">
           <img class="zoomable" src="images/mamoswine.jpg" alt="Mamoswine Pokémon card 025/094" />
           <h3>Mamoswine</h3>
           <div class="type-label">💧 Water Type · Uncommon</div>
-          <span class="price">$1.00</span>
+          <button class="price" type="button">$1.00</button>
+          <div class="buy-hint">👆 Tap the price to buy</div>
         </div>
 
         <div class="item">
           <img class="zoomable" src="images/stonjourner.jpg" alt="Stonjourner Pokémon card 081/132" />
           <h3>Stonjourner</h3>
           <div class="type-label">🥊 Fighting Type · Uncommon</div>
-          <span class="price">$1.00</span>
+          <button class="price" type="button">$1.00</button>
+          <div class="buy-hint">👆 Tap the price to buy</div>
         </div>
       </div>
     </div>
@@ -127,10 +130,21 @@
     <img src="" alt="" />
   </div>
 
+  <!-- ===== "How to buy" pop-up (opens when a price is tapped) ===== -->
+  <div class="popup" id="buy-popup">
+    <div class="popup-box">
+      <button class="popup-close" type="button" aria-label="Close">&times;</button>
+      <h2>How to buy a card from me 🤝</h2>
+      <p>This website is just for my <strong>family and friends</strong>. 💛</p>
+      <p>Buying a card is easy — you already know where to find me! Next time you <strong>see me in person</strong>, just tell me which card you want. We can talk about it face to face, and a grown-up can help. 😊</p>
+      <p>I love trading too, so if you have a cool card, maybe we can swap. See you soon! ⚡</p>
+    </div>
+  </div>
+
   <footer>
     Made with ❤️ by Gianluca and family
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

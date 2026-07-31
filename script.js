@@ -140,9 +140,37 @@ function setupDino() {
   requestAnimationFrame(tick);
 }
 
+// ===== Tap a price to see how to buy =====
+function setupBuyPopup() {
+  var popup = document.getElementById("buy-popup");
+  if (!popup) return;
+  var prices = document.querySelectorAll(".price");
+  var closeBtn = popup.querySelector(".popup-close");
+
+  function open() { popup.classList.add("open"); }
+  function close() { popup.classList.remove("open"); }
+
+  prices.forEach(function (price) {
+    price.addEventListener("click", open);
+  });
+
+  // Close via the × button (its own handler so it always works)
+  if (closeBtn) closeBtn.addEventListener("click", close);
+
+  // Close when tapping the dark background outside the box
+  popup.addEventListener("click", function (e) {
+    if (e.target === popup) close();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") close();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   showGreeting();
   showFunFact();
   setupLightbox();
   setupDino();
+  setupBuyPopup();
 });
