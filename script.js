@@ -109,29 +109,41 @@ function setupDino() {
   var forest = document.querySelector(".forest");
   if (!forest) return;
 
-  // Pteranodon gliding silhouette (front view): a smooth wide wing membrane,
-  // central head with a pointed beak and the long backward crest, small feet.
+  // A detailed, colored pteranodon illustration (side view, facing LEFT).
   var PTERO =
-    '<svg viewBox="0 0 240 130" width="90" height="49" xmlns="http://www.w3.org/2000/svg">' +
-    '<g fill="#3f342a">' +
-    // smooth wing membrane (pointed tips up, body dip in the middle)
-    '<path d="M12 54 Q 120 84 228 54 Q 120 100 12 54 Z"/>' +
+    '<svg viewBox="0 0 240 160" width="96" height="64" xmlns="http://www.w3.org/2000/svg">' +
+    // far wing (behind, darker)
+    '<path fill="#8a5e39" d="M104 70 C 142 46 182 38 210 44 C 182 58 154 76 132 96 C 124 86 112 76 104 70 Z"/>' +
+    // far leg
+    '<path fill="#7d5330" d="M122 92 L 128 118 L 135 116 L 129 92 Z"/>' +
+    // near leg
+    '<path fill="#9c6a3c" d="M110 90 L 116 120 L 124 118 L 118 90 Z"/>' +
+    // body
+    '<path fill="#a9764c" d="M60 66 C 84 58 112 60 138 72 C 158 82 172 84 180 90 C 170 98 150 98 134 93 C 112 100 88 95 72 84 C 60 77 52 71 60 66 Z"/>' +
+    // cream belly
+    '<path fill="#e8cfa2" d="M80 84 C 100 94 122 96 140 91 C 156 94 170 93 179 90 C 166 99 146 101 124 99 C 104 97 88 92 80 84 Z"/>' +
+    // neck to head
+    '<path fill="#a9764c" d="M64 66 C 52 60 42 60 40 66 C 46 72 56 74 66 74 C 76 72 82 68 64 66 Z"/>' +
+    // orange head crest (the pteranodon signature)
+    '<path fill="#d1543a" d="M58 52 C 66 44 80 36 102 26 C 90 42 78 54 70 60 C 65 59 60 57 58 52 Z"/>' +
     // head
-    '<circle cx="120" cy="86" r="12"/>' +
-    // pointed beak (points down/forward)
-    '<path d="M111 90 L 129 90 L 120 120 Z"/>' +
-    // long backward head crest (the pteranodon signature)
-    '<path d="M118 80 L 126 73 L 172 38 L 134 82 Z"/>' +
-    // feet
-    '<path d="M113 100 L 108 118 L 121 104 Z M127 100 L 132 118 L 119 104 Z"/>' +
-    '</g></svg>';
+    '<circle fill="#a9764c" cx="52" cy="60" r="13"/>' +
+    // beak (points left)
+    '<path fill="#e9cf98" d="M44 56 L 8 67 L 44 71 C 51 66 51 61 44 56 Z"/>' +
+    // eye
+    '<circle fill="#ffffff" cx="50" cy="57" r="4.2"/>' +
+    '<circle fill="#20140a" cx="49" cy="57" r="2.1"/>' +
+    // near wing: arm (brown) + membrane (lighter)
+    '<path fill="#a9764c" d="M76 62 C 118 38 170 32 224 44 C 198 50 172 58 150 68 Z"/>' +
+    '<path fill="#c99c68" d="M150 68 C 172 58 198 50 224 44 C 192 64 156 86 126 98 C 129 84 139 73 150 68 Z"/>' +
+    '</svg>';
 
   var dino = document.createElement("div");
   dino.className = "dino";
   dino.innerHTML = PTERO;
   forest.appendChild(dino);
 
-  var halfW = 45, halfH = 24;      // roughly half the pterodactyl's size
+  var halfW = 48, halfH = 32;      // roughly half the pterodactyl's size
   var rect = forest.getBoundingClientRect();
   var currentX = rect.width / 2, currentY = rect.height / 2;
   var targetX = currentX, targetY = currentY;
